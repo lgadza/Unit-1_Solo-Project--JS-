@@ -66,14 +66,16 @@ Write a piece of code for programmatically adding to the me object you defined b
 
 me.skills = ["HTML", "CSS", "JavaScript"];
 
-//TODO
 /* EXERCISE G
 
 
 Write a piece of code for programmatically removing the last skill from the skills array inside the me object.
 
 */
-delete me.skills[2];
+
+let skillsArr = Object.values(me.skills);
+skillsArr.pop();
+me.skills = skillsArr;
 console.log(me);
 
 // JS Functions
@@ -111,7 +113,13 @@ Ex.: splitMe("I love coding") => returns ["I", "Love", "Coding"]
 
 */
 function splitMe(str) {
-  return str.split(" ");
+  let array = [];
+  str = str.split(" ");
+  for (let i = 0; i < str.length; i++) {
+    let capitalised = str[i].charAt(0).toUpperCase() + str[i].slice(1);
+    array.push(capitalised);
+  }
+  return array;
 }
 console.log(splitMe("Louis Gadza and Lelo and Anaa"));
 
@@ -122,17 +130,15 @@ Write a function called deleteOne which receives a string and a boolean as param
 If the boolean value is true it should return the string without the first letter, otherwise it should remove the last one from it.
 
 */
-//TODO---2
+
 function deleteOne(str, boolean) {
   if (boolean === true) {
-    str.split(" ");
-    str.shift();
-    return str.join(" ");
-  } else {
-    return;
+    return str.slice(1);
+  } else if (boolean === false) {
+    return str.slice(0, str.length - 1);
   }
 }
-// console.log(deleteOne("Louis Gadza and Lelo and Anaa", true));
+console.log(deleteOne("Louis Gadza and Lelo and AnaaRe", false));
 
 /* EXERCISE 5
 
@@ -157,7 +163,7 @@ console.log(onlyLetters("I have 4 dogs!"));
 Write a function called isThisAnEmail which receives a string as a parameter and returns true if the string is a valid email address.
 
 */
-//TODO 3
+
 function isThisAnEmail(str) {
   if (str.includes("@gmail.com")) {
     return true;
@@ -262,7 +268,7 @@ console.log(isTodayMyBirthday(1));
 
 // JS Arrays & Objects
 
-// // NOTE: the movies array used in some exercises is defined at the end of this file
+// NOTE: the movies array used in some exercises is defined at the end of this file
 
 /* EXERCISE 11
 
@@ -272,21 +278,29 @@ and returns the given object after deleting its property named as the given stri
 TODO-----5
 
 */
+let obj = {
+  name: "Louis",
+  surname: "Gadza",
+  age: 24,
+};
+
 function deleteProp(obj, str) {
   // delete obj.str;
-  let objEntres = Object.entries(obj);
-  return obj;
+  // let objEntres = Object.entries(obj);
+  delete obj.str;
+  console.log(obj);
 }
-console.log(
-  deleteOne(
-    {
-      name: "Louis",
-      surname: "Gadza",
-      age: 24,
-    },
-    "surname"
-  )
-);
+deleteProp(obj, "name");
+// console.log(
+//   deleteOne(
+//     {
+//       name: "Louis",
+//       surname: "Gadza",
+//       age: 24,
+//     },
+//     "surname"
+//   )
+// );
 
 /* EXERCISE 12
 
@@ -571,7 +585,7 @@ console.log(sumAllTheYears(movies));
 Write a function called searchByTitle which receives a string as a parameter and returns all the movies in the provided movies array which contain that string in the title.
 
 */
-//TODO ---7
+
 function searchByTitle(str) {
   let filterArr = [];
   for (let i = 0; i < movies.length; i++) {
@@ -582,7 +596,7 @@ function searchByTitle(str) {
   }
   return filterArr;
 }
-console.log(searchByTitle("lord"));
+console.log(searchByTitle("game"));
 /* EXERCISE 19
 
 Write a function called searchAndDivide which receives a string as a parameter and returns an object;
@@ -590,9 +604,23 @@ Write a function called searchAndDivide which receives a string as a parameter a
 this object should contain an array called match, made by all the movies from the provided movies array which contain the given string in the title,
 
 and another array unmatch with all the remaining ones.
-TODO-----8
 */
-function searchAndDivide(str) {}
+function searchAndDivide(str) {
+  let object = {};
+  let matchArr = [];
+  let unmatchArr = [];
+  for (let i = 0; i < movies.length; i++) {
+    if (movies[i].Title.includes(str)) {
+      matchArr.push(movies[i]);
+    } else if (!movies[i].Title.includes(str)) {
+      unmatchArr.push(movies[i]);
+    }
+  }
+  object.match = matchArr;
+  object.unmatch = unmatchArr;
+  return object;
+}
+console.log(searchAndDivide("game"));
 
 /* EXERCISE 20
 
@@ -652,30 +680,33 @@ tree(3)
 ***
 
 *****
+TODO LAst
 
 */
 function tree(n) {
   let tree2 = "";
   for (let i = 0; i < n; i++) {
     let branch = "";
+
     branch += "*";
     tree2 += branch;
     console.log(tree2);
   }
 }
 
-console.log(halfTree(3));
+halfTree(3);
 
-// /* EXERCISE 23
+/* EXERCISE 23
 
-// Create a function called "isItPrime" that receives a number as a parameter and returns true if the given number is a prime number.
+Create a function called "isItPrime" that receives a number as a parameter and returns true if the given number is a prime number.
 
-// */
+*/
 
-// /* WHEN YOU ARE FINISHED
-
-// Commit and push the code to your personal GitHub repository; then post the link of your commit on the Homework section of today’s Eduflow.
-
-// */
-
-// /* This movies array is used throughout the exercises. You’re not supposed to alter it. */
+function isItPrime(n) {
+  if (n % 2 === 0) {
+    return true;
+  } else {
+    return false;
+  }
+}
+console.log(isItPrime(2));
