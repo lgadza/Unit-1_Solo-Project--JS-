@@ -676,29 +676,21 @@ tree(3)
 ***
 
 *****
-TODO LAst
+ TODO LAst
 
-*/
-function tree(n) {
-  let tree2 = "";
-  // for (let i = 0; i < n; i++) {
-  //   let branch = "*";
+// */
+// function tree(n) {
+//   let tree = "";
+//   for (let i = 0; i < n; i++) {
+//     let branch = "*";
 
-  //   branch += "**";
-  //   tree2 += branch;
-  //   console.log(tree2);
-  // }
-  do {
-    let branch = "*";
+//     branch += "**";
+//     tree += branch;
+//     console.log(tree);
+//   }
+// }
 
-    console.log(branch);
-  } while (1 > n);
-  {
-    branch += "**";
-  }
-}
-
-tree(3);
+// tree(3);
 
 /* EXERCISE 23
 
