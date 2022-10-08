@@ -242,16 +242,15 @@ function rollTheDices(n) {
 /* EXERCISE 9
 
 Write a function called howManyDays which receives a date as a parameter and returns the number of days passed since that date.
-TODO 4
 
 */
-// date=dd/mm/yy
-// function howManyDays(d,m,y) {
-//   let currentDate;
-//   if(m)
+let currentDate = 30;
 
-// }
-
+function howManyDays(d) {
+  let numberOfDays = currentDate - d;
+  return numberOfDays;
+}
+console.log(howManyDays(12));
 /* EXERCISE 10
 
 Write a function called isTodayMyBirthday which should return true if today’s your birthday, false otherwise.
@@ -275,7 +274,6 @@ console.log(isTodayMyBirthday(1));
 Write a function called deleteProp which receives an object and a string as parameters,
 
 and returns the given object after deleting its property named as the given string.
-TODO-----5
 
 */
 let obj = {
@@ -285,12 +283,10 @@ let obj = {
 };
 
 function deleteProp(obj, str) {
-  // delete obj.str;
-  // let objEntres = Object.entries(obj);
-  delete obj.str;
+  delete obj[str];
   console.log(obj);
 }
-deleteProp(obj, "name");
+deleteProp(obj, "age");
 // console.log(
 //   deleteOne(
 //     {
@@ -665,7 +661,7 @@ function halfTree(n) {
   }
 }
 
-halfTree(3);
+// halfTree(3);
 
 /* EXERCISE 22
 
@@ -685,16 +681,24 @@ TODO LAst
 */
 function tree(n) {
   let tree2 = "";
-  for (let i = 0; i < n; i++) {
-    let branch = "";
+  // for (let i = 0; i < n; i++) {
+  //   let branch = "*";
 
-    branch += "*";
-    tree2 += branch;
-    console.log(tree2);
+  //   branch += "**";
+  //   tree2 += branch;
+  //   console.log(tree2);
+  // }
+  do {
+    let branch = "*";
+
+    console.log(branch);
+  } while (1 > n);
+  {
+    branch += "**";
   }
 }
 
-halfTree(3);
+tree(3);
 
 /* EXERCISE 23
 
